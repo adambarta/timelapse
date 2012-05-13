@@ -1,8 +1,10 @@
 #!/bin/bash
 
+PREFIX=$(pwd)
+
 if [ ! -d "data/" ]; 
 then
-  mkdir data
+  mkdir $PREFIX/data
 fi
 
-wget $(cat url) -O data/$(date +%s).jpg 2> /dev/null
+wget $(cat $PREFIX/url) -O $PREFIX/data/$(date +%s).jpg 2> /dev/null
