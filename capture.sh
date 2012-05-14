@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PREFIX=$(pwd)
+#PREFIX=$(pwd)
+PREFIX=/home/adam/asc-webcam-site
 
 if [ ! -d "data/" ]; 
 then
