@@ -2,6 +2,15 @@
 
 PREFIX=$(pwd)
 #PREFIX=/home/adam/asc-webcam-site
+TODAY=$(date +%F)
+
+if [ -v $1 ];
+then
+  echo $TODAY $1
+fi
+
+exit
+
 
 if [ ! -d "data/" ]; 
 then
