@@ -1,1 +1,2 @@
-*/10 * * * * ./capture.sh #run every 10 mins
+*/1 6-19 * * * ./capture.sh #run every 10 mins
+*/1 17-19 * * * ./capture.sh #run every 10 mins
