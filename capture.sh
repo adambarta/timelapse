@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PREFIX=$(pwd)
-#PREFIX=/home/adam/asc-webcam-site
+#PREFIX=$(pwd)
+PREFIX=/home/adam/asc-webcam-site
 TODAY=$(date +%F)
 
 if [ -v $1 ];
