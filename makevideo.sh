@@ -1,5 +1,5 @@
-#!/usr/local/bin/bash
-#/bin/bash
+#!/bin/bash
+#/usr/local/bin/bash
 
 if [[ $# -lt 2 ]];
 then
@@ -7,8 +7,8 @@ then
   exit 1
 fi
 
-#PREFIX=$(pwd)
-PREFIX=/home/adam/asc-webcam-site
+PREFIX=$(pwd)
+#PREFIX=/home/adam/asc-webcam-site
 DATAPATH=$PREFIX/data/$2/$1
 OUTPUTPATH=$PREFIX/data/$2
 
