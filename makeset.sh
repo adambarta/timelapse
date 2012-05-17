@@ -12,7 +12,7 @@ OUTPUTPATH=$PREFIX/sets
 
 if [[ ! -d $DATAPATH ]];
 then
-  echo "error data not avail. try again!"
+  echo "error data not avail. try again after some captures!"
   exit 1
 fi
 
@@ -21,7 +21,7 @@ then
   mkdir -p $OUTPUTPATH
 fi
 
-for i in {7..1}
+for i in {6..0}
 do
   DAY=$(date -d @$[ $(date -d $1 +%s) - 60*60*24*$i ] +%F)
 
