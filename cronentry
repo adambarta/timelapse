@@ -1,5 +1,6 @@
 # m h  dom mon dow   command
 */1 6-19  * * * /home/adam/asc-webcam-site/capture.sh day
 */1 0-5,20-23 * * * /home/adam/asc-webcam-site/capture.sh night
-15 20 * * 0 /home/adam/asc-webcam-site/makeset $(date +%F) #sunday set for monday meeting
-15 20 * * 4 /home/adam/asc-webcam-site/makeset $(date +%F) #thursday test set
+15 20 * * 0 /home/adam/asc-webcam-site/makeset.sh
+5 21 * * 4 /home/adam/asc-webcam-site/makeset.sh 
+

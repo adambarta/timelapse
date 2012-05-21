@@ -1,9 +1,10 @@
 #!/usr/local/bin/bash
 
+TODAY=$1
+
 if [[ $# -lt 1 ]];
 then 
-  echo "useage: " $0 " [7 day week end date yyy-mm-dd]"
-  exit 1
+  TODAY=$(date +%F)
 fi
 
 PREFIX=/home/adam/asc-webcam-site
@@ -23,7 +24,7 @@ fi
 
 for i in {6..0}
 do
-  DAY=$(date -d @$[ $(date -d $1 +%s) - 60*60*24*$i ] +%F)
+  DAY=$(date -d @$[ $(date -d $TODAY +%s) - 60*60*24*$i ] +%F)
 
   if [[ -d $DATAPATH/$DAY ]];
   then  
@@ -46,9 +47,10 @@ done
 
 SET=${SET:1}
 
-#echo $SET
-#echo $FN
-
 mencoder -ovc copy -idx -o $OUTPUTPATH/set$FN.avi $SET
+
+#rm -v $SET
+
+$PREFIX/mail.sh $FN.avi
 
 exit 0
