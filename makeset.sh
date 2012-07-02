@@ -1,5 +1,7 @@
 #!/usr/local/bin/bash
 
+EXT=mp4
+
 TODAY=$1
 
 if [[ $# -lt 1 ]];
@@ -9,6 +11,7 @@ fi
 
 PREFIX=/home/adam/asc-webcam-site
 DATAPATH=$PREFIX/data
+TEMPPATH=/dev/shm
 OUTPUTPATH=$PREFIX/sets
 
 if [[ ! -d $DATAPATH ]];
@@ -29,7 +32,7 @@ do
   if [[ -d $DATAPATH/$DAY ]];
   then  
     
-    if [[ ! -e $DATAPATH/$DAY/day-out-$DAY.avi ]];
+    if [[ ! -e $TEMPPATH/day-out-$DAY.$EXT ]];
     then
       $PREFIX/makevideo.sh day $DAY
       if [ $? -ne 0 ]
@@ -39,7 +42,7 @@ do
       fi
     fi
 	
-    SET=$SET" "$DATAPATH/$DAY/day-out*.avi
+    SET=$SET" "$TEMPPATH/day-out-$DAY.$EXT
     FN=$FN..$DAY
   fi
 
@@ -47,10 +50,10 @@ done
 
 SET=${SET:1}
 
-mencoder -ovc copy -idx -o $OUTPUTPATH/set$FN.avi $SET
+mencoder -ovc copy -idx -o $OUTPUTPATH/set$FN.$EXT $SET
 
-#rm -v $SET
+rm -v $SET
 
-$PREFIX/mail.sh $FN.avi
+$PREFIX/mail.sh set$FN.$EXT
 
 exit 0
