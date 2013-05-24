@@ -16,10 +16,17 @@ then
 fi
 
 DATAPATH=$PREFIX/data/$TODAY/$1
+DATAPATH2=$PREFIX/data2/$TODAY/$1
 
 if [ ! -d $DATAPATH ]; 
 then
   mkdir -p $DATAPATH
 fi
 
+if [ ! -d $DATAPATH2 ]; 
+then
+  mkdir -p $DATAPATH2
+fi
+
 wget $(cat $PREFIX/url) -O $DATAPATH/$(date +%s).jpg 2> /dev/null
+wget $(cat $PREFIX/url2) -O $DATAPATH2/$(date +%s).jpg 2> /dev/null

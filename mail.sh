@@ -10,9 +10,9 @@ URL="http://kat-dbes.karoo.kat.ac.za/sets/"$1
 
 SUBJECT='WEEKLY Site Time Lapse'
 #EMAIL='adam@ska.ac.za rupert@ska.ac.za sharmila@ska.ac.za peter@ska.ac.za marc@ska.ac.za francois@ska.ac.za audrey@ska.ac.za jasper@ska.ac.za'
-EMAIL='adam@ska.ac.za rupert@ska.ac.za sharmila@ska.ac.za marc@ska.ac.za peter@ska.ac.za andrew@ska.ac.za francois@ska.ac.za jmanley@ska.ac.za shanly@ska.ac.za'
+#EMAIL='adam@ska.ac.za rupert@ska.ac.za sharmila@ska.ac.za marc@ska.ac.za peter@ska.ac.za andrew@ska.ac.za francois@ska.ac.za jmanley@ska.ac.za shanly@ska.ac.za ruby@ska.ac.za phil@ska.ac.za henno@ska.ac.za richarms@ska.ac.za'
 #EMAIL='adam@ska.ac.za sharmila@ska.ac.za'
-#EMAIL='adam@ska.ac.za'
+EMAIL='adam@ska.ac.za'
 #EMAIL='adam@kat-dbes'
 
 
