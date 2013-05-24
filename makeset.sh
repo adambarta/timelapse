@@ -3,14 +3,16 @@
 EXT=mp4
 
 TODAY=$1
+ID=$2
 
-if [[ $# -lt 1 ]];
+if [[ $# -lt 2 ]];
 then 
   TODAY=$(date +%F)
+  ID=
 fi
 
 PREFIX=/home/adam/asc-webcam-site
-DATAPATH=$PREFIX/data
+DATAPATH=$PREFIX/data$ID
 TEMPPATH=/dev/shm
 OUTPUTPATH=$PREFIX/sets
 
@@ -32,17 +34,17 @@ do
   if [[ -d $DATAPATH/$DAY ]];
   then  
     
-    if [[ ! -e $TEMPPATH/day-out-$DAY.$EXT ]];
+    if [[ ! -e $TEMPPATH/day-out-$ID-$DAY.$EXT ]];
     then
-      $PREFIX/makevideo.sh day $DAY
+      $PREFIX/makevideo.sh day $DAY $ID
       if [ $? -ne 0 ]
       then
-	echo "Error with makevideo for " $DAY
+	echo "Error with makevideo for " $DAY " " $ID
         exit 1
       fi
     fi
 	
-    SET=$SET" "$TEMPPATH/day-out-$DAY.$EXT
+    SET=$SET" "$TEMPPATH/day-out-$ID-$DAY.$EXT
     FN=$FN..$DAY
   fi
 
@@ -50,10 +52,10 @@ done
 
 SET=${SET:1}
 
-mencoder -ovc copy -idx -o $OUTPUTPATH/set$FN.$EXT $SET
+mencoder -ovc copy -idx -o $OUTPUTPATH/set-$ID-$FN.$EXT $SET
 
 rm -v $SET
 
-$PREFIX/mail.sh set$FN.$EXT
+#$PREFIX/mail.sh set$FN.$EXT
 
 exit 0
