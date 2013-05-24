@@ -24,4 +24,8 @@ mencoder "mf://$DATAPATH/*.jpg" -mf fps=30 -o $OUTPUTPATH/$1-out-$2.mp4 -ovc lav
 #mencoder "mf://$DATAPATH/*.jpg" -mf fps=30 -o $OUTPUTPATH/$1-out-$2.mp4 -ovc x264 -x264encopts bitrate=1000:me=umh:partitions=all:subq=6:frameref=5:8x8dct:bframes=3:b_pyramid:weight_b -vf crop=1280:720:0:0
 #mencoder "mf://$DATAPATH/*.jpg" -mf fps=30 -o $OUTPUTPATH/$1-out-$2.mp4 -ovc copy -vf crop=1280:720:0:0E
 
+
+#avconv -i set..2012-08-06..2012-08-07..2012-08-08..2012-08-09..2012-08-10..2012-08-11..2012-08-12.mp4 -codec:v libtheora -b:v 5000k -qmin 10 -qmax 42 -maxrate 5000k -bufsize 1000k -threads 4 output.ogv
+#avconv -i set..2012-08-06..2012-08-07..2012-08-08..2012-08-09..2012-08-10..2012-08-11..2012-08-12.mp4 -codec:v libtheora -b:v 5000k -qmin 10 -qmax 42 -maxrate 5000k -bufsize 1000k -threads 4 output.ogv
+
 exit 0
