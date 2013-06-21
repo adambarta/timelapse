@@ -25,10 +25,8 @@ function loadDoc(url)
   }
   xmlhttp.onreadystatechange=function()
   {
-    console.log(xmlhttp.readyState);
+    //console.log(xmlhttp.readyState);
     
-    // + "  " + xmlhttp.statusText);
-
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
       var data = xmlhttp.responseText;
@@ -36,14 +34,24 @@ function loadDoc(url)
       elemt = document.createElement("html");
       elemt.innerHTML = data;
       
-      imgs = elemt.getElementsByTagName("a");
+      var imgs = elemt.getElementsByTagName("a");
       
       //console.log(imgs);
 
-      for (i=0; i<imgs.length; i++){
+      //for (i=0; i<imgs.length; i++){
+      //  console.log(site+"/"+imgs[i].text);
+      //}
+
+      if (imgs.length < 2){
+        console.log("no imgs");
+        return;
+      }
+
+      for (i=1; i<imgs.length; i++){
         console.log(site+"/"+imgs[i].text);
       }
 
+      return imgs;
     }
   }
 
@@ -81,8 +89,11 @@ function set_up()
 
   loadDoc(site);
 
-  console.log(site);
 
+
+
+
+  //console.log(site);
 /*
   loadImages(sources, function(images) {
       context.drawImage(images.darthVader, 100, 30, 200, 137);
