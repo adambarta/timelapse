@@ -38,7 +38,7 @@ function loadImgs(img_list)
 {
   var count = 0;
 
-  for(i in img_list){
+  for(var i=1; i< img_list.length; i++){
     images[i] = new Image();
     images[i].src = site+"/"+img_list[i].text;
   }
