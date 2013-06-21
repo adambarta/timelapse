@@ -24,7 +24,7 @@ function loadDoc(url)
   }
   xmlhttp.onreadystatechange=function()
   {
-    //console.log(xmlhttp.readyState + "  " + xmlhttp.statusText);
+    console.log(xmlhttp.readyState);// + "  " + xmlhttp.statusText);
 
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
