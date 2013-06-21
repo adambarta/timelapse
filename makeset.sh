@@ -56,6 +56,10 @@ mencoder -ovc copy -idx -o $OUTPUTPATH/set-$ID-$FN.$EXT $SET
 
 rm -v $SET
 
+if [[ $ID -eq "2" ]];
+then
+  $PREFIX/youtube/drive_up.py $OUTPUTPATH/set-$ID-$FN.$EXT
+fi
 #$PREFIX/mail.sh set$FN.$EXT
 
 exit 0
