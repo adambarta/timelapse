@@ -45,7 +45,7 @@ function loadImgs(img_list)
     images[i].src = site+"/"+img_list[i].text;
   }
 
-  //console.log(images);
+  console.log(images);
   
   var btn = document.getElementById("btn");
   canvas = document.getElementById('can_image');
