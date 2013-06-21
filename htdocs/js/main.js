@@ -52,7 +52,7 @@ function loadImgs(img_list)
   context = canvas.getContext('2d');
 
   btn.onclick = function(){
-    context.drawImage(images.cur_img, 100, 30, 200, 137);
+    context.drawImage(images[cur_img], 100, 30, 200, 137);
     cur_img++;
   }
 }
