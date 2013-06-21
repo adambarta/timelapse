@@ -35,7 +35,7 @@ function loadDoc(url)
 
       elemt = document.createElement("html");
       elemt.innerHTML = data;
-      console.log(elemt.getElementByName("a"));
+      console.log(elemt.getElementsByName("a"));
     }
   }
 
