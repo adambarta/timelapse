@@ -46,6 +46,8 @@ function loadImgs(img_list)
   }
 
   //console.log(images);
+  var canvas = document.getElementById('can_image');
+  var context = canvas.getContext('2d');
 
   var btn = document.getElementById("btn");
 
@@ -97,9 +99,7 @@ function loadDoc(url)
 
 function set_up()
 {
-  var canvas = document.getElementById('can_image');
-  var context = canvas.getContext('2d');
-  
+    
   loadDoc(site);
   
   //console.log(site);
