@@ -35,7 +35,16 @@ function loadDoc(url)
 
       elemt = document.createElement("html");
       elemt.innerHTML = data;
-      console.log(elemt.getElementsByTagName("a"));
+      
+      imgs = elemt.getElementsByTagName("a");
+      
+      for (i=0; i<imgs.length; i++){
+        
+        console.log(imgs[i].href);
+        
+
+      }
+
     }
   }
 
