@@ -38,11 +38,11 @@ function loadDoc(url)
       
       imgs = elemt.getElementsByTagName("a");
       
-      console.log(imgs);
+      //console.log(imgs);
 
-      //for (i=0; i<imgs.length; i++){
-      //  console.log(imgs[i].href);
-      //}
+      for (i=0; i<imgs.length; i++){
+        console.log(imgs[i].text);
+      }
 
     }
   }
