@@ -14,6 +14,7 @@ var sources = {
 function loadDoc(url)
 {
   var xmlhttp;
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -30,7 +31,11 @@ function loadDoc(url)
 
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
-      console.log(xmlhttp.responseText);
+      var data = xmlhttp.responseText;
+
+      elemt = document.createElement("html");
+      elemt.innerHTML = data;
+      console.log(elemt.getElementByName("a"));
     }
   }
 
