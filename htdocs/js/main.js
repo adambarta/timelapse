@@ -4,12 +4,51 @@ var context;
 var today = (new Date()).toISOString().split("T");
 
 var site = "http://kat-dbes.karoo.kat.ac.za/cmplx/"+today[0]+"/day";
-//console.log(today[0]);
 
-var sources = {
-  darthVader: 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg',
-  yoda: 'http://www.html5canvastutorials.com/demos/assets/yoda.jpg'  
-};
+var images = {};
+
+//console.log(today[0]);
+//var sources = {
+//  darthVader: 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg',
+//  yoda: 'http://www.html5canvastutorials.com/demos/assets/yoda.jpg'  
+//};
+
+function loadImages(sources, callback) {
+  var images = {};
+  var loadedImages = 0;
+  var numImages = 0;
+  // get num of sources
+
+  for(var src in sources) {
+    numImages++;
+  }
+
+  for(var src in sources) {
+    images[src] = new Image();
+    images[src].onload = function() {
+      if(++loadedImages >= numImages) {
+        callback(images);
+      }
+    };
+    images[src].src = sources[src];
+  }
+
+}
+
+function loadImgs(img_list)
+{
+  var count = 0;
+
+  for(i in img_list){
+    images[i] = new Image();
+    images[i].src = img_list[i];
+  }
+
+
+  console.log(images);
+
+}
+
 
 function loadDoc(url)
 {
@@ -47,11 +86,12 @@ function loadDoc(url)
         return;
       }
 
-      for (i=1; i<imgs.length; i++){
-        console.log(site+"/"+imgs[i].text);
-      }
+      loadImgs(imgs);
 
-      return imgs;
+      //for (i=1; i<imgs.length; i++){
+      //  console.log(site+"/"+imgs[i].text);
+      //}
+
     }
   }
 
@@ -60,39 +100,14 @@ function loadDoc(url)
   xmlhttp.send();
 }
 
-function loadImages(sources, callback) {
-  var images = {};
-  var loadedImages = 0;
-  var numImages = 0;
-  // get num of sources
-
-  for(var src in sources) {
-    numImages++;
-  }
-
-  for(var src in sources) {
-    images[src] = new Image();
-    images[src].onload = function() {
-      if(++loadedImages >= numImages) {
-        callback(images);
-      }
-    };
-    images[src].src = sources[src];
-  }
-
-}
 
 function set_up()
 {
   var canvas = document.getElementById('can_image');
   var context = canvas.getContext('2d');
-
+  
   loadDoc(site);
-
-
-
-
-
+  
   //console.log(site);
 /*
   loadImages(sources, function(images) {
