@@ -24,16 +24,19 @@ function loadDoc(url)
   }
   xmlhttp.onreadystatechange=function()
   {
-    console.log(xmlhttp.readyState);// + "  " + xmlhttp.statusText);
+    console.log(xmlhttp.readyState);
+    
+    // + "  " + xmlhttp.statusText);
 
-    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
       console.log(xmlhttp.responseText);
     }
   }
 
-  //xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
   xmlhttp.open("GET", url, true);
+  xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xmlhttp.send();
 }
 
 function loadImages(sources, callback) {
@@ -66,6 +69,7 @@ function set_up()
   loadDoc(site);
 
   console.log(site);
+
 /*
   loadImages(sources, function(images) {
       context.drawImage(images.darthVader, 100, 30, 200, 137);
