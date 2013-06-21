@@ -3,7 +3,7 @@ var context;
 
 var today = (new Date()).toISOString().split("T");
 
-var site = "http://kat-dbes.karoo.kat.ac.za/cmplx/"+today[0]+"/day/";
+var site = "http://kat-dbes.karoo.kat.ac.za/cmplx/"+today[0]+"/day";
 //console.log(today[0]);
 
 var sources = {
