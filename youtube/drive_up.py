@@ -29,7 +29,7 @@ FILENAME = sys.argv[1]
 
 flow = OAuth2WebServerFlow(CLIENT_ID, CLIENT_SECRET, OAUTH_SCOPE, REDIRECT_URI)
 
-storage = Storage('credentials.dat')
+storage = Storage('/home/adam/asc-webcam-site/credentials.dat')
 credentials = storage.get()
 if credentials is None or credentials.invalid:
 	authorize_url = flow.step1_get_authorize_url()
