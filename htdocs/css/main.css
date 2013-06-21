@@ -1,4 +1,4 @@
-#btn{
-  cursor: hand;
+#btn:hover{
+  cursor: pointer;
 }
 
