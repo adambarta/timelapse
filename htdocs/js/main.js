@@ -7,6 +7,8 @@ var site = "http://kat-dbes.karoo.kat.ac.za/cmplx/"+today[0]+"/day";
 
 var images = {};
 
+var cur_img = 0;
+
 //console.log(today[0]);
 //var sources = {
 //  darthVader: 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg',
@@ -43,7 +45,13 @@ function loadImgs(img_list)
     images[i].src = site+"/"+img_list[i].text;
   }
 
-  console.log(images);
+  //console.log(images);
+
+  var btn = document.getElementById("btn");
+
+  btn.onclick = function(){
+    context.drawImage(images[cur_img], 100, 30, 200, 137);
+  }
 }
 
 
