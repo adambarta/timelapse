@@ -46,8 +46,10 @@ function loadImgs(img_list)
   }
 
   //console.log(images);
-
+  
   var btn = document.getElementById("btn");
+  canvas = document.getElementById('can_image');
+  context = canvas.getContext('2d');
 
   btn.onclick = function(){
     context.drawImage(images[cur_img], 100, 30, 200, 137);
@@ -97,9 +99,6 @@ function loadDoc(url)
 
 function set_up()
 {
-  var canvas = document.getElementById('can_image');
-  var context = canvas.getContext('2d');
-  
   loadDoc(site);
   
   //console.log(site);
