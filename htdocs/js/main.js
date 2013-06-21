@@ -41,7 +41,7 @@ function loadDoc(url)
       //console.log(imgs);
 
       for (i=0; i<imgs.length; i++){
-        console.log(imgs[i].text);
+        console.log(site+"/"+imgs[i].text);
       }
 
     }
