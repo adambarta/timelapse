@@ -7,7 +7,7 @@ var site = "http://kat-dbes.karoo.kat.ac.za/cmplx/"+today[0]+"/day";
 
 var images = {};
 
-var cur_img = 0;
+var cur_img = 1;
 
 //console.log(today[0]);
 //var sources = {
@@ -52,7 +52,8 @@ function loadImgs(img_list)
   context = canvas.getContext('2d');
 
   btn.onclick = function(){
-    context.drawImage(images[cur_img], 100, 30, 200, 137);
+    context.drawImage(images.cur_img, 100, 30, 200, 137);
+    cur_img++;
   }
 }
 
