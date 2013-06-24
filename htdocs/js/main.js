@@ -42,9 +42,9 @@ function loadImgs(img_list)
   for(var i=1; i< img_list.length; i++){
     images[i] = new Image();
     images[i].src = site+"/"+img_list[i].text;
-    images[i].onload = function(e, i){
+    /*images[i].onload = function(e, i){
       console.log("image " + i); 
-    }
+    }*/
   }
 
   //console.log(images);
@@ -55,7 +55,9 @@ function loadImgs(img_list)
 
   btn.onclick = function(){
     context.drawImage(images[cur_img], 0, 0, 800, 600);
-    console.log(cur_img++);
+    cur_img++;
+    if (cur_img == images.length)
+      cur_img = 1;
   }
 }
 
