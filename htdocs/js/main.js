@@ -57,7 +57,7 @@ function loadImgs(img_list)
     context.drawImage(images[cur_img], 0, 0, 800, 600);
     cur_img++;
     if (cur_img == images.length)
-      cur_img = 0;
+      cur_img = 1;
   }
 }
 
