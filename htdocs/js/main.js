@@ -35,8 +35,6 @@ function loadImages(sources, callback) {
 }
 */
 
-
-
 function loadImgs(img_list)
 {
   var count = 0;
@@ -54,7 +52,7 @@ function loadImgs(img_list)
 
   btn.onclick = function(){
     context.drawImage(images[cur_img], 0, 0, 800, 600);
-    cur_img++;
+    console.log(cur_img++);
   }
 }
 
