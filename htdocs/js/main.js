@@ -104,7 +104,7 @@ function set_up()
   
   context.beginPath();
   //context.moveTo(0,700);
-  context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+  context.arc(0, 0, 10, 0, 2 * Math.PI, false);
   context.fillStyle = 'green';
   context.fill();
   context.lineWidth = 5;
