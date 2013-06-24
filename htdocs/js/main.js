@@ -57,8 +57,6 @@ function loadImgs(img_list)
   }
 }
 
-
-
 function loadDoc(url)
 {
   var xmlhttp;
