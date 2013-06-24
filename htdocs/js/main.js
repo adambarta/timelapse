@@ -47,7 +47,7 @@ function loadImgs(img_list)
     }
   }
 
-  console.log(images);
+  //console.log(images);
   
   var btn = document.getElementById("btn");
   canvas = document.getElementById('can_image');
@@ -55,7 +55,7 @@ function loadImgs(img_list)
 
   btn.onclick = function(){
     context.drawImage(images[cur_img], 0, 0, 800, 600);
-    //console.log(cur_img++);
+    console.log(cur_img++);
   }
 }
 
