@@ -93,6 +93,7 @@ function set_up()
   context.closePath();
 */
 
+
   //console.log(site);
 /*
   loadImages(sources, function(images) {
