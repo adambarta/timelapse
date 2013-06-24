@@ -10,7 +10,6 @@ var images = {};
 var cur_img = 1;
 
 
-
 function loadImgs(img_list)
 {
   var count = 0;
@@ -20,15 +19,20 @@ function loadImgs(img_list)
     images[i].src = site+"/"+img_list[i].text;
   }
 
-  console.log(images);
+  //console.log(images);
   
   var btn = document.getElementById("btn");
   canvas = document.getElementById('can_image');
   context = canvas.getContext('2d');
 
   btn.onclick = function(){
-    context.drawImage(images[cur_img], 0, 0, 800, 600);
-    cur_img++;
+    if (images[cur_img]){
+      context.drawImage(images[cur_img], 0, 0, 800, 600);
+      cur_img = cur_img + 1;
+      if (cur_img == images.length)
+        cur_img = 1;
+    }
+    console.log(cur_img);
   }
 }
 
@@ -76,6 +80,20 @@ function set_up()
 {
   loadDoc(site);
   
+ /* 
+  context.beginPath();
+
+  context.arc(0, 0, 100, 0, 2 * Math.PI, false);
+  context.fillStyle = 'green';
+  context.fill();
+  context.lineWidth = 5;
+  context.strokeStyle = '#003300';
+  context.stroke();
+  
+  context.closePath();
+*/
+
+
   //console.log(site);
 /*
   loadImages(sources, function(images) {
