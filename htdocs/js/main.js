@@ -36,6 +36,7 @@ function loadImages(sources, callback) {
 */
 
 
+
 function loadImgs(img_list)
 {
   var count = 0;
