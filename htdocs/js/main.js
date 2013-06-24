@@ -55,7 +55,7 @@ function loadImgs(img_list)
 
   btn.onclick = function(){
     context.drawImage(images[cur_img], 0, 0, 800, 600);
-    cur_img++;
+    cur_img = cur_img + 1;
     if (cur_img == images.length)
       cur_img = 1;
   }
