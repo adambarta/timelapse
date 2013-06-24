@@ -9,31 +9,6 @@ var images = {};
 
 var cur_img = 1;
 
-//console.log(today[0]);
-//var sources = {
-//  darthVader: 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg',
-//  yoda: 'http://www.html5canvastutorials.com/demos/assets/yoda.jpg'  
-//};
-/*
-function loadImages(sources, callback) {
-  var images = {};
-  var loadedImages = 0;
-  var numImages = 0;
-  // get num of sources
-  for(var src in sources) {
-    numImages++;
-  }
-  for(var src in sources) {
-    images[src] = new Image();
-    images[src].onload = function() {
-      if(++loadedImages >= numImages) {
-        callback(images);
-      }
-    };
-    images[src].src = sources[src];
-  }
-}
-*/
 
 function loadImgs(img_list)
 {
@@ -42,9 +17,6 @@ function loadImgs(img_list)
   for(var i=1; i< img_list.length; i++){
     images[i] = new Image();
     images[i].src = site+"/"+img_list[i].text;
-    /*images[i].onload = function(e, i){
-      console.log("image " + i); 
-    }*/
   }
 
   //console.log(images);
