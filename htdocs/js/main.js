@@ -108,7 +108,7 @@ function set_up()
 {
   loadDoc(site);
   
-  
+ /* 
   context.beginPath();
 
   context.arc(0, 0, 100, 0, 2 * Math.PI, false);
@@ -119,7 +119,7 @@ function set_up()
   context.stroke();
   
   context.closePath();
-
+*/
 
   //console.log(site);
 /*
