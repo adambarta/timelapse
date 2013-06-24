@@ -60,6 +60,7 @@ function loadImgs(img_list)
       if (cur_img == images.length)
         cur_img = 1;
     }
+    console.log(cur_img);
   }
 }
 
