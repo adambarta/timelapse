@@ -1,5 +1,5 @@
 var canvas;
-//var context;
+var context;
 
 var today = (new Date()).toISOString().split("T");
 
@@ -11,62 +11,11 @@ var load_count = 0;
 
 var cur_img = 0;
 
-function image_forward(){
-  
-  if (images[cur_img]){
-    //context.drawImage(images[cur_img], 0, 0, dw, dh);
-    canvas.style.backgroundImage = "url("+images[cur_img].src+")";
-    cur_img = cur_img + 1;
-  }
-  if (cur_img == num_images)
-    cur_img = 0;
-}
-
-/*
-function image_backward(){
-  if (images[cur_img]){
-    context.drawImage(images[cur_img], 0, 0, ww, wh);
-    cur_img = cur_img - 1;
-  }
-  if (cur_img == 0)
-    cur_img = num_images-1;
-}
-*/
-
-window.requestAnimFrame = (function(callback) {
-    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-    function(callback) {
-      window.setTimeout(callback, 1000);
-    };
-})();
-
-
-function animate(){
-  image_forward();
-  requestAnimFrame(animate);
-}
-
-function loadImgs(img_list)
-{
-  var count = 0;
-	
-  num_images = img_list.length-1;
-
-  console.log(num_images);
-
-  for(var i=0; i< num_images; i++){
-    images[i] = new Image();
-    images[i].src = site+"/"+img_list[i+1].text;
-    images[i].onload = function(img){
-      load_count++;
-      if (load_count == num_images){
-        console.log("all images loaded");
-        //console.log(images[0].width+" "+images[0].height);
-        animate();
-      }
-    }
-  }
-  
+function writeMessage(message) {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.font = '18pt Calibri';
+  context.fillStyle = 'black';
+  context.fillText(message, 10, 25);
 }
 
 function loadDoc(url)
@@ -107,11 +56,72 @@ function loadDoc(url)
   xmlhttp.send();
 }
 
+function image_forward(){
+  
+  if (images[cur_img]){
+    context.drawImage(images[cur_img], 0, 0, 800, 600);
+    //canvas.style.backgroundImage = "url("+images[cur_img].src+")";
+    cur_img = cur_img + 1;
+  }
+  if (cur_img == num_images){
+    cur_img = 0;
+    loadDoc(site);
+  }
+}
+
+/*
+function image_backward(){
+  if (images[cur_img]){
+    context.drawImage(images[cur_img], 0, 0, ww, wh);
+    cur_img = cur_img - 1;
+  }
+  if (cur_img == 0)
+    cur_img = num_images-1;
+}
+*/
+
+window.requestAnimFrame = (function(callback) {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(callback) {
+      window.setTimeout(callback, 1000);
+    };
+})();
+
+
+function animate(){
+  image_forward();
+  requestAnimFrame(animate);
+}
+
+function loadImgs(img_list)
+{
+  var count = 0;
+	
+  num_images = img_list.length-1;
+
+  console.log(num_images);
+
+  for(var i=0; i< num_images; i++){
+    images[i] = new Image();
+    images[i].src = site+"/"+img_list[i+1].text;
+    images[i].onload = function(img){
+      load_count++;
+      writeMessage("Loading "+load_count+"/" +num_images);
+      if (load_count == num_images){
+        console.log("all images loaded");
+        //console.log(images[0].width+" "+images[0].height);
+        animate();
+      }
+    }
+  }
+  
+}
+
 function set_up()
 {
-  //canvas = document.getElementById('can_image');
-  canvas = document.getElementsByTagName('body')[0];
-  //context = canvas.getContext('2d');
+  canvas = document.getElementById('can_image');
+  //canvas = document.getElementsByTagName('body')[0];
+  context = canvas.getContext('2d');
 
   console.log(canvas.style);
 
