@@ -1,39 +1,72 @@
 var canvas;
-var context;
+//var context;
 
 var today = (new Date()).toISOString().split("T");
 
 var site = "http://kat-dbes.karoo.kat.ac.za/cmplx/"+today[0]+"/day";
 
 var images = {};
+var num_image = 0;
+var load_count = 0;
 
-var cur_img = 1;
+var cur_img = 0;
 
+function image_forward(){
+  
+  if (images[cur_img]){
+    //context.drawImage(images[cur_img], 0, 0, dw, dh);
+    canvas.style.backgroundImage = "url("+images[cur_img].src+")";
+    cur_img = cur_img + 1;
+  }
+  if (cur_img == num_images)
+    cur_img = 0;
+}
+
+/*
+function image_backward(){
+  if (images[cur_img]){
+    context.drawImage(images[cur_img], 0, 0, ww, wh);
+    cur_img = cur_img - 1;
+  }
+  if (cur_img == 0)
+    cur_img = num_images-1;
+}
+*/
+
+window.requestAnimFrame = (function(callback) {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(callback) {
+      window.setTimeout(callback, 1000);
+    };
+})();
+
+
+function animate(){
+  image_forward();
+  requestAnimFrame(animate);
+}
 
 function loadImgs(img_list)
 {
   var count = 0;
+	
+  num_images = img_list.length-1;
 
-  for(var i=1; i< img_list.length; i++){
+  console.log(num_images);
+
+  for(var i=0; i< num_images; i++){
     images[i] = new Image();
-    images[i].src = site+"/"+img_list[i].text;
-  }
-
-  //console.log(images);
-  
-  var btn = document.getElementById("btn");
-  canvas = document.getElementById('can_image');
-  context = canvas.getContext('2d');
-
-  btn.onclick = function(){
-    if (images[cur_img]){
-      context.drawImage(images[cur_img], 0, 0, 800, 600);
-      cur_img = cur_img + 1;
-      if (cur_img == images.length)
-        cur_img = 1;
+    images[i].src = site+"/"+img_list[i+1].text;
+    images[i].onload = function(img){
+      load_count++;
+      if (load_count == num_images){
+        console.log("all images loaded");
+        //console.log(images[0].width+" "+images[0].height);
+        animate();
+      }
     }
-    console.log(cur_img);
   }
+  
 }
 
 function loadDoc(url)
@@ -50,7 +83,6 @@ function loadDoc(url)
   }
   xmlhttp.onreadystatechange=function()
   {
-    //console.log(xmlhttp.readyState);
     
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
@@ -75,32 +107,15 @@ function loadDoc(url)
   xmlhttp.send();
 }
 
-
 function set_up()
 {
+  //canvas = document.getElementById('can_image');
+  canvas = document.getElementsByTagName('body')[0];
+  //context = canvas.getContext('2d');
+
+  console.log(canvas.style);
+
   loadDoc(site);
-  
- /* 
-  context.beginPath();
-
-  context.arc(0, 0, 100, 0, 2 * Math.PI, false);
-  context.fillStyle = 'green';
-  context.fill();
-  context.lineWidth = 5;
-  context.strokeStyle = '#003300';
-  context.stroke();
-  
-  context.closePath();
-*/
-
-
-  //console.log(site);
-/*
-  loadImages(sources, function(images) {
-      context.drawImage(images.darthVader, 100, 30, 200, 137);
-      context.drawImage(images.yoda, 350, 55, 93, 104);
-      });
-  */
 }
 
 
